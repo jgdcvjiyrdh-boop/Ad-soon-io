@@ -4,14 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ad Player</title>
-    <!-- ACPC (AdCash) Library Script -->
-    <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
-    <!-- AdCash Auto-Tag Script -->
-    <script type="text/javascript">
-        aclib.runAutoTag({
-            zoneId: 'qmwnsnvqbx',
-        });
-    </script>
+    <!-- OnClickAds Script -->
+    <script async src="https://js.onclckmn.com/static/onclicka.js" data-admpid="397039"></script>
     <style>
         * {
             margin: 0;
@@ -43,13 +37,10 @@
             color: white;
             padding: 20px;
             text-align: center;
+            position: relative;
         }
         
         .header h1 {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
             font-size: 24px;
             font-weight: 600;
             margin-bottom: 5px;
@@ -58,6 +49,17 @@
         .header p {
             font-size: 14px;
             opacity: 0.8;
+        }
+        
+        .ad-provider-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
         }
         
         .content {
@@ -233,17 +235,14 @@
             animation: pulse 2s infinite;
         }
         
-        .adcash-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            background: #f8f9fa;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            color: #6c757d;
-            margin-top: 10px;
-            border: 1px solid #dee2e6;
+        .ad-note {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 15px;
+            font-size: 13px;
+            color: #856404;
         }
         
         @keyframes pulse {
@@ -271,15 +270,9 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>
-                <i class="fas fa-ad" style="font-size: 24px;"></i>
-                Ad Player
-            </h1>
+            <div class="ad-provider-badge">OnClickAds</div>
+            <h1>Ad Player</h1>
             <p>Watch ads and earn rewards</p>
-            <div class="adcash-badge">
-                <i class="fas fa-bolt" style="color: #FF6B00;"></i>
-                Powered by AdCash
-            </div>
         </div>
         
         <div class="content">
@@ -300,18 +293,16 @@
             </div>
             
             <div class="ad-controls">
-                <button class="start-btn" id="startBtn">
-                    <i class="fas fa-play" style="margin-right: 8px;"></i>
-                    Start Ad
-                </button>
-                <button class="skip-btn hidden" id="skipBtn">
-                    <i class="fas fa-forward" style="margin-right: 5px;"></i>
-                    Skip Ad
-                </button>
+                <button class="start-btn" id="startBtn">Start Ad</button>
+                <button class="skip-btn hidden" id="skipBtn">Skip Ad</button>
             </div>
             
             <div class="ad-info">
                 <p>Watch the complete ad to receive your reward</p>
+            </div>
+            
+            <div class="ad-note">
+                <strong>Note:</strong> This interface is integrated with OnClickAds to serve real advertisements.
             </div>
             
             <div class="reward-notification hidden" id="rewardNotification">
@@ -334,9 +325,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Font Awesome for icons -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
